@@ -1239,12 +1239,12 @@ class MusicBot(discord.Client):
         else:
             usr = user_mentions[0]
             return Response("%s's id is `%s`" % (usr.name, usr.id), reply=True, delete_after=35)
-    
+
     async def cmd_save(self, player):
         """
         Usage:
             {command_prefix}save
-        
+
         Saves the current song to the autoplaylist.
         """
         if player.current_entry and not isinstance(player.current_entry, StreamPlaylistEntry):
@@ -1259,7 +1259,7 @@ class MusicBot(discord.Client):
                 raise exceptions.CommandError('This song is already in the autoplaylist.')
         else:
             raise exceptions.CommandError('There is no valid song playing.')
-            
+
 
     @owner_only
     async def cmd_joinserver(self, message, server_link=None):
@@ -2676,3 +2676,27 @@ class MusicBot(discord.Client):
             log.debug("Pausing player in \"{}\" due to unavailability.".format(server.name))
             self.server_specific_data[server]['availability_paused'] = True
             player.pause()
+
+
+# Custom commands:
+
+    async def cmd_info(self, channel, author, server):
+        """
+        Usage:
+            {command_prefix}info
+        Gets infomation about the bot.
+        """
+        return Response("Cука Блять каток %s!\nYou are on %s.\n I'm the bot. I can play music for you and a few other things. Write %shelp for commands." % (author.mention, server.name, self.config.command_prefix),
+        delete_after=10)
+        #         reply=True,
+
+    async def cmd_sendall(self, args, leftover_args):
+        """
+        Usage:
+            {command_prefix}sendall <message>
+        Sends a message to all servers the bot is on
+        """
+        if leftover_args:
+            args = ' '.join([args, *leftover_args])
+        for s in self.servers:
+            await self.client.send_message(discord.Object(id='399214862254866433'), args)
