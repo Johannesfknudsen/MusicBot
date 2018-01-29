@@ -2686,7 +2686,7 @@ class MusicBot(discord.Client):
             {command_prefix}info
         Gets infomation about the bot.
         """
-        return Response("Cука Блять каток %s!\nYou are on %s.\n I'm the bot. I can play music for you and a few other things. Write %shelp for commands." % (author.mention, server.name, self.config.command_prefix),
+        return Response("Cука Блять каток %s!\nYou are on the %s server.\n I'm the bot. I can play music for you and a few other things. Type %shelp for the commands." % (author.mention, server.name, self.config.command_prefix),
         delete_after=10)
         #         reply=True,
 
