@@ -6,7 +6,11 @@ Please tick all applicable boxes.
 
 Which version are you using?
 
+<<<<<<< HEAD
 - [ ] The latest `master` version (1.9.8)
+=======
+- [ ] The latest `master` version (1.9.7)
+>>>>>>> cc3ebe66bb56593d26e7307981cf8241a626391e
 - [ ] The latest `review` version
 
 What type of issue are you creating?
